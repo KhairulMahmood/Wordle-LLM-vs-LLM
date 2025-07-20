@@ -1,0 +1,30 @@
+# Python virtual environments
+venv/
+env/
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Log files
+*.log
+frontend_debug.log
+
+# IDE / Editor configuration
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+static/js/app1.js
+LLM Wordle Project - Updated Changes Checklist.md
+LLM Wordle Project Documentation.md

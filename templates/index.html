@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Wordle Battle - AI vs AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">🤖 LLM Wordle Battle 🆚</h1>
+            <p class="subtitle">Watch two AI models compete head-to-head in Wordle!</p>
+        </header>
+
+        <!-- Game Status Panel -->
+        <div class="status-panel">
+            <div class="status-item">
+                <span class="status-label">Turn:</span>
+                <span id="turn-counter" class="status-value">-/-</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Status:</span>
+                <span id="game-status" class="status-value">Ready to Start</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Secret Word:</span>
+                <span id="secret-word" class="status-value">[Hidden]</span>
+            </div>
+        </div>
+
+        <!-- Main Game Area -->
+        <main class="main-content">
+            <!-- Player 1 Section -->
+            <div class="player-section">
+                <h2 class="player-title">🔵 Player 1 (llama.cpp)</h2>
+                <div class="wordle-grid" id="player1-grid">
+                    <!-- Grid will be populated by JavaScript -->
+                </div>
+                <div class="player-status">
+                    <span id="player1-status" class="player-status-text">Waiting...</span>
+                </div>
+            </div>
+
+            <!-- VS Divider -->
+            <div class="vs-divider">
+                <div class="vs-text">VS</div>
+                <div class="controls">
+                    <button id="start-game-btn" class="btn btn-primary">Start Battle</button>
+                    <button id="new-game-btn" class="btn btn-secondary" style="display: none;">New Battle</button>
+                </div>
+            </div>
+
+            <!-- Player 2 Section -->
+            <div class="player-section">
+                <h2 class="player-title">🔴 Player 2 (Ollama)</h2>
+                <div class="wordle-grid" id="player2-grid">
+                    <!-- Grid will be populated by JavaScript -->
+                </div>
+                <div class="player-status">
+                    <span id="player2-status" class="player-status-text">Waiting...</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Battle Log -->
+        <div class="battle-log-panel">
+            <h3 class="battle-log-title">⚔️ Battle Log</h3>
+            <div class="battle-log" id="battle-log">
+                <div class="log-message system">
+                    <span class="message-sender">System:</span>
+                    <span class="message-content">Welcome to LLM Wordle Battle! Click "Start Battle" to watch two AI models compete.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Winner Announcement -->
+        <div id="winner-announcement" class="winner-announcement" style="display: none;">
+            <div class="winner-content">
+                <h2 id="winner-text" class="winner-text"></h2>
+                <p id="winner-details" class="winner-details"></p>
+                <button id="celebrate-btn" class="btn btn-celebration">🎉 Celebrate!</button>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Connecting to AI models...</div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+
